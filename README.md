@@ -25,3 +25,22 @@ The Terraform CLI installation instructions have changed due to gpg keyring chan
 # Doucmentations
 
 GitPod Tasks - [Here](https://www.gitpod.io/docs/configure/workspaces/tasks)
+
+# AWS CLI Installation
+AWS CLI is installed for the project via the bash script [./bin/install_aws_clis.sh](./bin/install_aws_cli.sh)
+
+[AWS CLI env vars](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html)
+
+We can check if our AWS credentials are configured correctly by running the following command:
+```sh 
+aws sts get-caller-identity
+```
+
+you get a response like this:
+```json
+{
+    "UserId": "AIDAW6SF6Z53KVDFZQMUE",
+    "Account": "477961834358",
+    "Arn": "arn:aws:iam::477961834358:user/terraform-beginner-bootcamp"
+}
+```

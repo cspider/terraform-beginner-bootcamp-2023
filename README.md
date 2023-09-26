@@ -39,8 +39,8 @@ aws sts get-caller-identity
 you get a response like this:
 ```json
 {
-    "UserId": "AIDAW6SF6Z53KVDFZQMUE",
-    "Account": "477961834358",
-    "Arn": "arn:aws:iam::477961834358:user/terraform-beginner-bootcamp"
+    "UserId": "xxxxxxxxx",
+    "Account": "1234567890123",
+    "Arn": "arn:aws:iam::123456789012:user/some-user-here"
 }
 ```

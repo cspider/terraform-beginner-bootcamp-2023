@@ -63,6 +63,8 @@ The providers and modules are located at the following URL:
 ## Terraform Output
     terraform output --auto-approve
 ## Terraform validate
+## Terraform destroy
+    terraform destroy 
 
 `.terraform.lock.hcl`  contains the locked versioning for the providers of modules that should be used with the project. 
 
@@ -77,6 +79,10 @@ This **file should not be commiitted** to the source control system. This file c
 ### Terraform directory
 
 
+## Using multiple provider
+
+You can have only one required provider block, so if you want to add multiple providers, use all of them in `required_providers` block, 
+and define provider block for each of those. For each resources, use provider name to avoid confusions. 
 
 
 

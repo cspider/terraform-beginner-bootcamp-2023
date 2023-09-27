@@ -44,3 +44,39 @@ you get a response like this:
     "Arn": "arn:aws:iam::123456789012:user/some-user-here"
 }
 ```
+## Terraform Basics
+
+## Terraform Registry
+
+### Learning about Terraform registry and also trying to navigate Terraform Providers and Modules
+
+- **Terraform Providers** are logical abstractions of upstream API for different types of services and cloud providers. They are responsible for understanding the API interactions and exposing resources from the service providers.
+
+- **Terraform Modules** are a way to make large amount of Terraform code modular, portable and sharable. 
+
+The providers and modules are located at the following URL: 
+[Terraform Registry](https://registry.terraform.io/)
+
+## Terraform Init
+## Terraform Plan
+## Terraform Apply
+## Terraform Output
+    terraform output --auto-approve
+## Terraform validate
+
+`.terraform.lock.hcl`  contains the locked versioning for the providers of modules that should be used with the project. 
+
+The terraform lock file should be commited to your Version Control System like GitHub
+
+`.terraform.tfstate` contain information about the current state of your infrastructure. 
+
+This **file should not be commiitted** to the source control system. This file can contain sensitive data. If you lose the file, you lose knowing the state of your infrastructure. 
+
+`.terraform.tfstate.backup` - previous state file
+
+### Terraform directory
+
+
+
+
+

@@ -86,3 +86,21 @@ and define provider block for each of those. For each resources, use provider na
 
 
 
+
+
+## Issues with Terraform Cloud Login and Gitpod Workspace
+
+When attempting to run `terraform login`, it will launch a wiswig view in bash to generate a token. Did not work for Andrew Brown, but worked for me.
+
+The file where the token is stored is: `<user-home>/.terraform.d/credentials.tfrc.json` with permission `600`
+
+```json
+{
+  "credentials": {
+    "app.terraform.io": {
+      "token": "Token-from-Terraform-Cloud-Account-here"
+    }
+  }
+}
+
+```

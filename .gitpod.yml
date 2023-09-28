@@ -2,7 +2,8 @@ tasks:
   - name: terraform
     before: 
       source ./bin/install_terraform_cli.sh
-      source bin/generate_terraform_api_login.sh
+      source ./bin/generate_terraform_api_login.sh
+      source ./bin/add_tf_aliases.sh
   - name: aws-cli
     env:
       AWS_CLI_AUTO_PROMPT: on-partial

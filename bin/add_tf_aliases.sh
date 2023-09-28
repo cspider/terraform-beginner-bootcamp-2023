@@ -13,5 +13,4 @@ if ! grep -q "alias $alias_name='$terraform_command'" ~/.bash_profile; then
 else
     echo "Alias '$alias_name' for '$terraform_command' already exists in ~/.bash_profile."
 fi
-source ~/.bash_profile
 

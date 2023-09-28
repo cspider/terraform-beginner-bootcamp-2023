@@ -1,6 +1,6 @@
 tasks:
   - name: terraform
-    before:  |
+    before:
       source ./bin/add_tf_aliases.sh
       source ./bin/install_terraform_cli.sh
       source ./bin/generate_terraform_api_login.sh

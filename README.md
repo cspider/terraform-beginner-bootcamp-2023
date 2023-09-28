@@ -84,6 +84,10 @@ This **file should not be commiitted** to the source control system. This file c
 You can have only one required provider block, so if you want to add multiple providers, use all of them in `required_providers` block, 
 and define provider block for each of those. For each resources, use provider name to avoid confusions. 
 
+## Need to create environment variables in terraform cloud workspace 
+
+Otherwise aws provider failed with the error that "No credential sources found"
+
 
 
 

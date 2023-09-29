@@ -5,7 +5,7 @@
 # Table of contents
 
 - [Terraform Beginner Bootcamp 2023](#terraform-beginner-bootcamp-2023)
-  - [Semantic VErsioning](#semantic-versioning)
+  - [Semantic Versioning](#semantic-versioning)
   - [Install the Terraform CLI](#install-the-terraform-cli)
   - [Refactoring into Bash Scripts](#refactoring-into-bash-scripts)
 - [Doucmentations](#doucmentations)
@@ -18,7 +18,7 @@
   - [Issues with Terraform Cloud Login and Gitpod Workspace](#issues-with-terraform-cloud-login-and-gitpod-workspace)
 
 
-## Semantic VErsioning
+## Semantic Versioning
 
 Ginve a version number **MAJOR.MINOR.PATCH**, increment the: 
 

@@ -1,5 +1,8 @@
 # Terraform Beginner Bootcamp 2023
 
+## Architecture Diagram
+![Architectural Diagram](architecture-diagram.png)
+
 ## Weekly Journals
 - [Week 0 Jurnal](journal/week0.MD)
 

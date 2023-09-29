@@ -53,7 +53,7 @@ resource "aws_s3_bucket" "my_s3_bucket" {
   provider = aws
   tags = {
     Name        = "My first bucket"
-    Environment = "Devte"
+    Environment = "Dev"
   }
 }
 

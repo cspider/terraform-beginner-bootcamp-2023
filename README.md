@@ -1,5 +1,8 @@
 # Terraform Beginner Bootcamp 2023
 
+## GitHub Repo for Andrew Brown 
+[terraform-beginner-bootcamp-2023](https://github.com/omenking/terraform-beginner-bootcamp-2023)
+
 ## Architecture Diagram
 ![Architectural Diagram](architecture-diagram.png)
 

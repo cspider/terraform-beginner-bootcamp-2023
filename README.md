@@ -5,6 +5,7 @@
 
 ## Weekly Journals
 - [Week 0 Jurnal](journal/week0.MD)
+- [Week 1 Jurnal](journal/week1.MD)
 
 ## Extras about things we learned
 - [GitHub Markdown ToC Generator](https://luciopaiva.com/markdown-toc/)

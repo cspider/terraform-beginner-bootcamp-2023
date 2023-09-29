@@ -1,7 +1,5 @@
 # Terraform Begineer Bootcamp Week0
 
-# Terraform Begineer Bootcamp Week0
-
 # Table of contents
 
 - [Terraform Beginner Bootcamp 2023](#terraform-beginner-bootcamp-2023)

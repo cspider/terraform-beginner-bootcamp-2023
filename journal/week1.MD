@@ -76,3 +76,17 @@ Our root module structure is as follows:
   - README.md - required for root modules
 
 [Terraform Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure)
+
+
+## Terraform Import
+
+### Terraform dealing with config drift
+### Fix manual configuration
+
+### Fix missing resources with Terraform import 
+
+[Terraform import](https://developer.hashicorp.com/terraform/cli/import)
+
+If someone goes and delete for modified cloud resource manually through manual action like click and delete.
+
+If we run Terraform plani, is with attempt to put our infrastructure back inot the expected state fixing Configuration Drift

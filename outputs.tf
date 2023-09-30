@@ -1,13 +1,9 @@
 output "generated_user_uuid" {
    value = var.user_uuid
- }
-
-output "bucket_name_id" {
-    value = random_string.bucket_name.id
 }
 
-output "bucket_name_result" {
-    value = random_string.bucket_name.result
+output "bucket_name_id" {
+    value = var.bucket_name
 }
 
 output "my_s3_bucket_name" {

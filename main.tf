@@ -14,32 +14,22 @@ terraform {
     workspaces {
       name = "terra-house-1"
     }
-}
-
+  }
   required_providers {
      aws = {
       source = "hashicorp/aws"
       version = "5.18.1"
-    }
+    } 
   }
 }
 
 
-provider "aws" {
-  # Configuration options
+
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+  user_uuid = var.user_uuid
+  bucket_name = var.bucket_name
 }
 
 
-
-resource "aws_s3_bucket" "my_s3_bucket" {
-  bucket = var.bucket_name
-  provider = aws
-  tags = {
-    Name        = "My first bucket"
-    UserUuid   = var.user_uuid
-    Environment = "Dev"
-  }
-
-}
-
-
+ 

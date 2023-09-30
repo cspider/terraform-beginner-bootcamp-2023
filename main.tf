@@ -14,7 +14,7 @@ terraform {
     workspaces {
       name = "terra-house-1"
     }
-  }
+}
 
   required_providers {
     random = {
@@ -53,18 +53,10 @@ resource "aws_s3_bucket" "my_s3_bucket" {
   provider = aws
   tags = {
     Name        = "My first bucket"
+    UserUuid   = var.user_uuid
     Environment = "Dev"
   }
+
 }
 
-output "bucket_name_id" {
-    value = random_string.bucket_name.id
-}
 
-output "bucket_name_result" {
-    value = random_string.bucket_name.result
-}
-
-output "my_s3_bucket_name" {
-  value = aws_s3_bucket.my_s3_bucket.arn
-}

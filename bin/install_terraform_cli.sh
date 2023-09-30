@@ -22,4 +22,4 @@ sudo apt-get install terraform -y
 
 terraform -help
 
-cd $PR
+cd $PROJECT_ROOT

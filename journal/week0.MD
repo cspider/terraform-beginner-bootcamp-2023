@@ -24,7 +24,7 @@ Ginve a version number **MAJOR.MINOR.PATCH**, increment the:
 
 
 etc.
-(semver.org)(https://semver.org)
+[semver.org](https://semver.org)
 
 ## Install the Terraform CLI
 

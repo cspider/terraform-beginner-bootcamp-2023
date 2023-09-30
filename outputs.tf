@@ -1,5 +1,5 @@
 output "generated_user_uuid" {
-   value = local.user_uuid
+   value = var.user_uuid
  }
 
 output "bucket_name_id" {

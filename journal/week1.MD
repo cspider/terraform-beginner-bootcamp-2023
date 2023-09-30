@@ -90,3 +90,35 @@ Our root module structure is as follows:
 If someone goes and delete for modified cloud resource manually through manual action like click and delete.
 
 If we run Terraform plani, is with attempt to put our infrastructure back inot the expected state fixing Configuration Drift
+
+
+### Fix using TF refresh
+```
+   terraform apply --refresh-only --auto-approve
+```
+
+## Terraform Modules
+
+### Terraform Module Sourcess
+
+[Terraform modules documentation](https://developer.hashicorp.com/terraform/language/modules/sources)
+
+Using the source we can import the module from various places, e.g.:
+- locally
+- GitHub
+- Terraform registry 
+- any custom terraform registry
+
+### Terrafor module structures
+It is recommend to place modules in a "modules" directory
+
+
+### Passing Input variables to the modules
+
+```
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+  user_uuid = var.user_uuid
+  bucket_name = var.bucket_name
+}
+```

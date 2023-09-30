@@ -122,3 +122,5 @@ module "terrahouse_aws" {
   bucket_name = var.bucket_name
 }
 ```
+
+## Considerations when using ChatGPT to write terraform. LLMs such as ChatGPT may not be traindedon the latest documetnation of information about terraform. 

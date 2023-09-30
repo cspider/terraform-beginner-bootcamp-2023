@@ -63,3 +63,16 @@ Terraform loads variables in the following order, with later sources taking prec
 
 Important: In Terraform 0.12 and later, variables with map and object values behave the same way as other variables: the last value found overrides the previous values. This is a change from previous versions of Terraform, which would merge map values instead of overriding them.
 
+=======
+## Root Module Structures
+
+Our root module structure is as follows:
+- PROJECT ROOT
+  - variables.tf
+  - main.tf
+  - providers.tf - define required
+  - outputs.tf
+  - terraform.tfvars - data of variables we want to load into our terraform project
+  - README.md - required for root modules
+
+[Terraform Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure)

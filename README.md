@@ -7,8 +7,8 @@
 ![Architectural Diagram](architecture-diagram.png)
 
 ## Weekly Journals
-- [Week 0 Jurnal](journal/week0.MD)
-- [Week 1 Jurnal](journal/week1.MD)
+- [Week 0 Journal](journal/week0.MD)
+- [Week 1 Journal](journal/week1.MD)
 
 ## Extras about things we learned
 - [GitHub Markdown ToC Generator](https://luciopaiva.com/markdown-toc/)

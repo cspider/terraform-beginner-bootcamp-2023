@@ -17,11 +17,6 @@ terraform {
 }
 
   required_providers {
-    random = {
-      source = "hashicorp/random"
-      version = "3.5.1"
-    }
-
      aws = {
       source = "hashicorp/aws"
       version = "5.18.1"
@@ -34,22 +29,10 @@ provider "aws" {
   # Configuration options
 }
 
-provider "random" {
-  # Configuration options
-}
 
-resource "random_string" "bucket_name" {
-  provider = random
-  lower = true
-  upper = false
-  numeric = true
-  length           = 32
-  special          = false
-  override_special = ""
-}
 
 resource "aws_s3_bucket" "my_s3_bucket" {
-  bucket = random_string.bucket_name.result
+  bucket = var.bucket_name
   provider = aws
   tags = {
     Name        = "My first bucket"

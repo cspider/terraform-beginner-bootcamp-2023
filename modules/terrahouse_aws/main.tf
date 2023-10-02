@@ -9,9 +9,17 @@ resource "aws_s3_bucket" "website_bucket" {
   }
 }
 
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_object
+resource "aws_s3_object" "object" {
+  bucket = aws_s3_bucket.website_bucket.bucket
+  key    = "index.html"
+  source = "/workspace/terraform-beginner-bootcamp-2023/modules/public/index.html"
+            
+}
 
-resource "aws_s3_bucket_website_configuration" "website_bucket_config" {
-  bucket = aws_s3_bucket.website_bucket.id
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_website_configuration
+resource "aws_s3_bucket_website_configuration" "website_configuration" {
+  bucket = aws_s3_bucket.website_bucket.bucket
 
   index_document {
     suffix = "index.html"

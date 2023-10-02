@@ -113,14 +113,42 @@ Using the source we can import the module from various places, e.g.:
 It is recommend to place modules in a "modules" directory
 
 
-### Passing Input variables to the modules
+Passing Input Variables
 
-```
+We can pass input variables to our module. The module has to declare the terraform variables in its own variables.tf
+
 module "terrahouse_aws" {
   source = "./modules/terrahouse_aws"
   user_uuid = var.user_uuid
   bucket_name = var.bucket_name
 }
-```
 
-## Considerations when using ChatGPT to write terraform. LLMs such as ChatGPT may not be traindedon the latest documetnation of information about terraform. 
+
+Using the source we can import the module from various places eg:
+
+- locally
+- Github
+- Terraform Registry
+
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+}
+[Modules Sources](https://developer.hashicorp.com/terraform/language/modules/sources)
+
+## Root Module Structure
+
+## Considertation when using ChatGPT to write Terraform
+LLMs such as ChatGPT may not be trained on the latest documentation or information about Terraformm
+
+It may like produce older examples that could be deprecated, often effecting providers. 
+
+## Working with Files in Terraform 
+
+### Path variables.
+
+In Terraform, there is a special variable called `path` that allows us to reference local paths:
+- path.module
+- path.root
+- path.cwd
+[Special Path variables](https://developer.hashicorp.com/terraform/language/expressions/references#filesystem-and-workspace-info)
+

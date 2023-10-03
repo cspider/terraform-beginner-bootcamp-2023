@@ -113,12 +113,76 @@ Using the source we can import the module from various places, e.g.:
 It is recommend to place modules in a "modules" directory
 
 
-### Passing Input variables to the modules
+Passing Input Variables
 
-```
+We can pass input variables to our module. The module has to declare the terraform variables in its own variables.tf
+
 module "terrahouse_aws" {
   source = "./modules/terrahouse_aws"
   user_uuid = var.user_uuid
   bucket_name = var.bucket_name
 }
+
+
+Using the source we can import the module from various places eg:
+
+- locally
+- Github
+- Terraform Registry
+
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+}
+[Modules Sources](https://developer.hashicorp.com/terraform/language/modules/sources)
+
+## Root Module Structure
+
+## Considertation when using ChatGPT to write Terraform
+LLMs such as ChatGPT may not be trained on the latest documentation or information about Terraformm
+
+It may like produce older examples that could be deprecated, often effecting providers. 
+
+## Working with Files in Terraform 
+
+### Path variables.
+
+n Terraform, there is a special variable called `path` that allows us to reference local paths:
+- path.module
+- path.root
+- path.cwd
+[Special Path variables](https://developer.hashicorp.com/terraform/language/expressions/references#filesystem-and-workspace-info)
+
+
+### Issues with absolute path and fixed with path.root variable
+
+In my terrahouse_aws/main.tf file in aws_s3_object, I had the path like this:
 ```
+   source = "/gitpod/my-repo-name/public/index.html"
+```
+And `terraform apply` failed with the error that source file cannot be opened, file does not exist.
+Once I replace `/gitpod/my-repo-name` with `${path.root}` it worked. So this worked
+
+```go
+   source = "${path.root}/public/index.html"
+```
+Andrew Brown did not have this issue, because Andrew is using local state.
+
+### Use etag to trigger S3 Object copy when file content changes
+```go
+etag=filemd5("/path/to/file")
+```
+### Use fileexists("/path/to/file") to validate a file path variable value
+
+Documentation: [Terraform fileexists function](https://developer.hashicorp.com/terraform/language/functions/fileexists)
+
+```go
+variable "index_html_filepath" {
+  description = "The file path for index.html"
+  type        = string
+   validation {
+     condition = fileexists("${var.index_html_filepath}")
+     error_message = "The provided path for index.html does not exist"
+   }
+}
+```
+

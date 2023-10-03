@@ -146,9 +146,43 @@ It may like produce older examples that could be deprecated, often effecting pro
 
 ### Path variables.
 
-In Terraform, there is a special variable called `path` that allows us to reference local paths:
+n Terraform, there is a special variable called `path` that allows us to reference local paths:
 - path.module
 - path.root
 - path.cwd
 [Special Path variables](https://developer.hashicorp.com/terraform/language/expressions/references#filesystem-and-workspace-info)
+
+
+### Issues with absolute path and fixed with path.root variable
+
+In my terrahouse_aws/main.tf file in aws_s3_object, I had the path like this:
+```
+   source = "/gitpod/my-repo-name/public/index.html"
+```
+And `terraform apply` failed with the error that source file cannot be opened, file does not exist.
+Once I replace `/gitpod/my-repo-name` with `${path.root}` it worked. So this worked
+
+```go
+   source = "${path.root}/public/index.html"
+```
+Andrew Brown did not have this issue, because Andrew is using local state.
+
+### Use etag to trigger S3 Object copy when file content changes
+```go
+etag=filemd5("/path/to/file")
+```
+### Use fileexists("/path/to/file") to validate a file path variable value
+
+Documentation: [Terraform fileexists function](https://developer.hashicorp.com/terraform/language/functions/fileexists)
+
+```go
+variable "index_html_filepath" {
+  description = "The file path for index.html"
+  type        = string
+   validation {
+     condition = fileexists("${var.index_html_filepath}")
+     error_message = "The provided path for index.html does not exist"
+   }
+}
+```
 

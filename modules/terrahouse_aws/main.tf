@@ -10,11 +10,17 @@ resource "aws_s3_bucket" "website_bucket" {
 }
 
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_object
-resource "aws_s3_object" "object" {
+resource "aws_s3_object" "index_html" {
   bucket = aws_s3_bucket.website_bucket.bucket
   key    = "index.html"
-  source = "/workspace/terraform-beginner-bootcamp-2023/modules/public/index.html"
-            
+  source = var.index_html_filepath
+  etag   = filemd5("${path.root}/public/index.html")
+}
+resource "aws_s3_object" "error_html" {
+  bucket = aws_s3_bucket.website_bucket.bucket
+  key    = "error.html"
+  source = var.error_html_filepath
+  etag   = filemd5("${path.root}/public/error.html")
 }
 
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_website_configuration

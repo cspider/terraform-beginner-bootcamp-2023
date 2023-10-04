@@ -1,5 +1,8 @@
 # Terraform Begineer Bootcamp Week 1
 
+## Fixing tags
+
+[How to Delete Local and Remote Tags on Git](https://devconnected.com/how-to-delete-local-and-remote-tags-on-git/)
 
 ## Root Module Structures
 
@@ -185,4 +188,47 @@ variable "index_html_filepath" {
    }
 }
 ```
+## Terraform Locals
+
+Locals allows us to define local variables. 
+It is very useful when we need to transform data within terraform code
+
+```go
+  locals {
+    s3_origin_id = "MyS3Origin"
+  }
+```
+
+
+## Terraform Datasources
+
+[Terraform Data Sources](https://developer.hashicorp.com/terraform/language/data-sources)
+
+
+## Content Invalidation for CloudFront
+[Invalidating files in cloudfront cache](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html)
+
+Note: you can use S3 versioned files - versioning for cache invalidation - TODO - need to read more about this
+
+You can also apply it in CLI
+```bash
+  aws cloudfront create-invalidation --distribution-id distribution_ID --paths "/*"
+```
+
+## Use jsonencode function to supply a policy json string as inline
+[jsonencode function](https://developer.hashicorp.com/terraform/language/functions/jsonencode)
+
+```go 
+policy = jsonencode({
+   your json document here
+})
+
+```
+for .e.g.
+
+```bash
+> jsonencode({"hello"="world"})
+"{\"hello\":\"world\"}"
+```
+
 

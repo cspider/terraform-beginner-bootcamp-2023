@@ -244,3 +244,28 @@ for .e.g.
 
 Can be use to provide a virtual non-existent resources
 
+## Provisioners
+
+[Terraform Provisioners](https://developer.hashicorp.com/terraform/language/resources/provisioners/syntax)
+
+Provisioners allow you to execute commands on compute instances for actions e.g. a AWS CLI command
+
+They are not recommended for use by Hashicorp, because Configuration management tools such as Ansible are a better fit, but the functionality exists
+
+### local-exec
+
+this will execute a command on the machine running the TF e.g. plan apply
+
+```go
+ provisioner "local-exec" {
+    command = <<EOT
+      aws cloudfront create-invalidation \
+        --distribution-id ${aws_cloudfront_distribution.s3_distribution.id} \
+        --paths "/*"
+    EOT
+  }
+```
+
+### remote-exec
+
+on remote computer like cloud when tf plan or apply is running

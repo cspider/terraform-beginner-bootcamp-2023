@@ -112,3 +112,35 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     cloudfront_default_certificate = true
   }
 }
+
+resource "terraform_data" "invalidate_cache" {
+  triggers_replace = terraform_data.content_version.output
+  
+   # Use local-exec provisioner to run a shell command 
+   # command is using multi-line heredoc
+  provisioner "local-exec" {
+    command = <<EOT
+      aws cloudfront create-invalidation \
+        --distribution-id ${aws_cloudfront_distribution.s3_distribution.id} \
+        --paths "/*"
+    EOT
+  }
+}
+
+
+resource "null_resource" "cloudfront_invalidation" {
+  # Trigger the local-exec provisioner when the CloudFront distribution is created or updated
+  triggers = {
+    distribution_id = aws_cloudfront_distribution.s3_distribution.id
+  }
+
+  # Use local-exec provisioner to run a shell command
+  provisioner "local-exec" {
+    command = <<EOT
+      aws cloudfront create-invalidation \
+        --distribution-id ${aws_cloudfront_distribution.s3_distribution.id} \
+        --paths "/*"
+    EOT
+  }
+  depends_on = [ aws_cloudfront_distribution.s3_distribution ]
+}

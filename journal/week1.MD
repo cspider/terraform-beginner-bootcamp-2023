@@ -232,3 +232,15 @@ for .e.g.
 ```
 
 
+## Terraform Resource Lifecycle Meta-argument
+
+[Meta-arguments: Lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle)
+
+1. use replce_by_trigger with a version and also ignore_changes argument
+
+## Terraform 
+
+[Terraform-Data resource](https://developer.hashicorp.com/terraform/language/resources/terraform-data)
+
+Can be use to provide a virtual non-existent resources
+

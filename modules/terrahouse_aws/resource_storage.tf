@@ -9,6 +9,12 @@ resource "aws_s3_bucket" "website_bucket" {
   }
 }
 
+#https://developer.hashicorp.com/terraform/language/resources/terraform-data
+resource "terraform_data" "content_version" {
+  input = var.content_version
+}
+
+
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_object
 resource "aws_s3_object" "index_html" {
   bucket = aws_s3_bucket.website_bucket.bucket
@@ -16,6 +22,15 @@ resource "aws_s3_object" "index_html" {
   source = var.index_html_filepath
   content_type = "text/html"
   etag   = filemd5("${path.root}/public/index.html")
+  lifecycle {
+    replace_triggered_by = [
+      # Replace `aws_appautoscaling_target` each time the variable
+      # content version is changed
+     terraform_data.content_version.output
+    ]
+    ignore_changes = [ etag ]
+  }
+
 }
 resource "aws_s3_object" "error_html" {
   bucket = aws_s3_bucket.website_bucket.bucket
@@ -23,6 +38,14 @@ resource "aws_s3_object" "error_html" {
   source = var.error_html_filepath
   content_type = "text/html"
   etag   = filemd5("${path.root}/public/error.html")
+  lifecycle {
+    replace_triggered_by = [
+      # Replace `aws_appautoscaling_target` each time the variable
+      # content version is changed
+     terraform_data.content_version.output
+    ]
+    ignore_changes = [ etag ]
+  }
 }
 
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_website_configuration

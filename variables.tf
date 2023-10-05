@@ -38,7 +38,13 @@ variable "error_html_filepath" {
    }
 }
 
+variable "assets_path" {
+  description = "Path to the assets for terrahouse_aws module"
+  type = string
+}
+
 variable "content_version" {
   description = "Content version for html files"
   type = number
 }
+

@@ -1,5 +1,7 @@
 # Terraform Begineer Bootcamp Week 1
 
+## Side skill - Games Arcanum and Starfield
+
 ## Fixing tags
 
 [How to Delete Local and Remote Tags on Git](https://devconnected.com/how-to-delete-local-and-remote-tags-on-git/)
